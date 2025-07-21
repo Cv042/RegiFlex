@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Flask Auth App{% endblock %}
+
+{% block content %}
+<div class="welcome-container">
+    <div class="welcome-card">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' if category == 'success' else 'info' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" title="Close alert">
+                            <span class="visually-hidden">Close</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <h1 class="display-4 text-primary mb-4">🎉 Welcome!</h1>
+        
+        <div class="mb-4">
+            <h3>Hello, <span class="text-success">{{ username }}</span>!</h3>
+            <p class="lead text-muted">You have successfully logged into your account.</p>
+        </div>
+        
+        <div class="row text-center mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🔐 Secure</h5>
+                        <p class="card-text">Your password is safely encrypted using industry-standard hashing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">🚀 Fast</h5>
+                        <p class="card-text">Built with Flask and MySQL for optimal performance.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">📱 Responsive</h5>
+                        <p class="card-text">Works perfectly on all devices with Bootstrap styling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <p class="text-muted mb-3">Thank you for using our Flask authentication system!</p>
+            <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

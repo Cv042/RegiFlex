@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+}
+
+.flashes li {
+    color: red;
+    list-style: none;
+}
